@@ -24,7 +24,8 @@ module.exports = {
         allowNull:false
       },
       sexe: {
-        type: Sequelize.ENUM("Homme","Femme","Autre")
+        type: Sequelize.ENUM("Homme","Femme","Autre"),
+        allowNull: false,
       },
       taille: {
         type: Sequelize.INTEGER(155),

@@ -11,6 +11,13 @@ const app = express();
 //autoriser les request cross origin
 app.use(cors());
 // parse le contenu du body de ma request (req.body)
+// Gère aussi application/ecmascript pour compatibilité
+app.use((req, res, next) => {
+    if (req.headers['content-type'] === 'application/ecmascript') {
+        req.headers['content-type'] = 'application/json';
+    }
+    next();
+});
 app.use(express.json());
 //log les request http
 app.use(morgan('dev'));
