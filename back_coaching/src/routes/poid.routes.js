@@ -2,12 +2,13 @@ const {Router} = require("express");
 
 // je recupere mon controller poid
 const poidController = require("../controllers/poid.controller");
-const authMiddleware = require("../middlewares/auth");
+
 const { poidRules } = require("../middlewares/validators/poid.validator");
 
 const router = Router();
 
-router.post("/", authMiddleware, ...poidRules, poidController.poid);
-router.get
+router.post("/", ...poidRules, poidController.addPoid);
+router.get("/", poidController.getAllPoidsByUser);
+router.get("/:id", poidController.poidById);
 
 module.exports = router;
